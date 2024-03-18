@@ -1,0 +1,16 @@
+#wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar {
+  padding: 30px;
+}
+#navbar > a {
+  margin-right: 20px;
+}
+
+#messages {
+  padding: 30px;
+}
