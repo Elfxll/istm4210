@@ -99,7 +99,7 @@ button{
 /* MODAL CONTENT */
 .modal-content {
   background-color: #fefefe;
-  margin: 1% auto; /* 15% from the top and centered */
+  margin: 0.5% auto; /* 15% from the top and centered */
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 2%;
