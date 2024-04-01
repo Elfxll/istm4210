@@ -1,0 +1,46 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.post {
+    margin-bottom: 40px;
+}
+.post h2 {
+    color: #333;
+}
+.post p {
+    line-height: 1.6;
+}
+.post .meta {
+    color: #777;
+    font-size: 0.8em;
+}
+#wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+}
+#navbar a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+}
+#messages a {
+    text-decoration: none;
+    color: #333;
+}
