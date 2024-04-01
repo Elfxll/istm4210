@@ -45,13 +45,13 @@
 
       // HARD-CODED DUMMY LISTINGS
       const listings = [
-        new Listing("1", "Ultra Maniac manga set", "items", "$15", "Set of volumes 1-5", "South Hall", "Mai"),
-        new Listing("2", "Levi's jeans", "items", "$20", "size 26, no noticeable flaws", "1959 E St", "Catherine"),
-        new Listing("3", "Bath and Body Works perfume", "items", "$0", "Wild Apple Daffodil and Wild Berry Tulip, barely used", "1959 E St", "Tina"),
-        new Listing("4", "SQL Tutoring", "services", "$15", "SQL and relational database tutoring, $15/hr", "Gelman Library", "Jake"),
-        new Listing("5", "Dogsitting", "services", "$30", "Experienced dogsitting, $30/day", "Foggy Bottom", "Vicky"),
-        new Listing("6", "Fall 2024 move-in help", "moving", "$20", "Experienced dogsitting, $20/hour", "Foggy Bottom", "Andrew"),
-        new Listing("7", "Spring 2024 move-out help", "moving", "$20", "Experienced dogsitting, $20/hour", "Foggy Bottom", "Ellie")
+        new Listing("1", "Ultra Maniac manga set", "items", "15", "Set of volumes 1-5", "South Hall", "Mai"),
+        new Listing("2", "Levi's jeans", "items", "20", "size 26, no noticeable flaws", "1959 E St", "Catherine"),
+        new Listing("3", "Bath and Body Works perfume", "items", "0", "Wild Apple Daffodil and Wild Berry Tulip, barely used", "1959 E St", "Tina"),
+        new Listing("4", "SQL Tutoring", "services", "15", "SQL and relational database tutoring, $15/hr", "Gelman Library", "Jake"),
+        new Listing("5", "Dogsitting", "services", "30", "Experienced dogsitting, $30/day", "Foggy Bottom", "Vicky"),
+        new Listing("6", "Fall 2024 move-in help", "moving", "20", "Need move-in help? I'll help unload your stuff into your new dorm $20/hour", "Foggy Bottom", "Andrew"),
+        new Listing("7", "Spring 2024 move-out help", "moving", "20", " Will help load your stuff to move out. $20/hour", "Foggy Bottom", "Ellie")
       ];
 
       for (let i = 0; i < listings.length; i++) {
@@ -72,6 +72,9 @@
         var price = listings[i].price;
         if (price == "0") {
           price = "Free"
+        }
+        else{
+          price = "$"+price;
         }
         ourPrice.innerHTML = price;
         const ourLocation = document.createElement("p");
@@ -101,7 +104,7 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <img src = "images/market/${listing.id}-full.jpg" class = "img-full center">
             <h2 class="listing-title">${listing.name}</h2>
-            <p>${listing.price}</p>
+            <p>$${listing.price}</p>
 
             <div>
               <h4>Send the seller a message</h4>
