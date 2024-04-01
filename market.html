@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GWU Student Hub | Home</title>
+    <title>GWU Student Hub | Marketplace</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="style.css" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+    <link href="market-style.css" rel="stylesheet">
   </head>
   <body>
     <div id="wrapper">
@@ -17,6 +18,7 @@
         <a href="messages.html">Messages</a>
       </div>
     </div>
+    
     <div id="myBtnContainer">
       <button class="btn active" onclick="filterSelection('all')"> Show all</button>
       <button class="btn" onclick="filterSelection('items')"> Listings</button>
@@ -98,6 +100,15 @@
             <img src = "images/market/${listing.id}-full.jpg" class = "img-full center">
             <h2 class="listing-title">${listing.name}</h2>
             <p>${listing.price}</p>
+
+            <div>
+              <h4>Send the seller a message</h4>
+              <form action="/action_page.php">
+                <input type="text" size="50" id="message" name="message" value= "Hi, is this still available?"><br><br>
+                <input type="submit" value="Send">
+              </form>
+            </div>
+
             <h3>Description</h3>
             <p>${listing.description}</p>
             <h3>Seller Information</h3>
@@ -130,17 +141,15 @@
       function filterSelection(c) {
           var x, i;
           x = document.getElementsByClassName("filterDiv");
-          if (c == "all") {
-              c = "";
-          }
           for (i = 0; i < x.length; i++) {
-              if (x[i].classList.contains(c)) {
+              if (c == "all" || x[i].classList.contains(c)) {
                   x[i].style.display = "block";
               } else {
                   x[i].style.display = "none";
               }
           }
       }
+
 
       function w3AddClass(element, name) {
         var i, arr1, arr2;
