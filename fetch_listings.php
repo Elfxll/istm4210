@@ -1,7 +1,7 @@
 <?php
     $servername = "mai-nguyen.online";
     $username = "mai_n";
-    $password = "Notmyferret1?";
+    $password = "W8AEkw=?r#tH";
     $database = "STUDENT_HUB"; // Changed database name
     
     // Create connection
