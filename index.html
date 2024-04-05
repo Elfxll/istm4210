@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GWU Student Hub | Home</title>
+    <title>GWU Student Hub | Welcomd</title>
     <meta
       charset="utf-8"
       name="viewport"
@@ -25,14 +25,15 @@
     </div>
 
     <div id="login-container">
-      <form id="login-form">
-        <h1>Log in using GWID</h1>
-          <label for="username">GWID:</label>
+      <form id="login-form" method="post" action="valid.php">
+        <h1>Log in with GW email to get started</h1>
+          <label for="username">GW Email:</label>
           <input type="text" id="username" name="username" required>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required>
           <button type="button" id="password-toggle" onclick="togglePasswordVisibility()">Show Password</button>
           <button type="submit">Login</button>
+          <p style="text-align: center;"><a href="register.html">New here? Register with your GW email</a></p>
       </form>
 
       <script>

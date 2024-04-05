@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style/main-style.css" rel="stylesheet">
     <link href="style/login-style.css" rel="stylesheet">
-    <title>GWU Student Hub | Log In</title>
+    <title>GWU Student Hub | Register</title>
 </head>
 <body>
-    <form id="login-form" method="get" action="valid.php">
-        <h1>Log in using GWID</h1>
-        <label for="username">GWID:</label>
+    <form id="register-form" method="post" action="register.php">
+        <h1>Register using GW </h1>
+        <label for="username">GW Email: </label>
         <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <button type="button" id="password-toggle" onclick="togglePasswordVisibility()">Show Password</button>
-        <button type="submit">Login</button>
+        <button type="submit">Create user</button>
     </form>
 
     <script>

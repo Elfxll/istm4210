@@ -2,7 +2,7 @@
     $servername = "mai-nguyen.online";
     $username = "mai_n";
     $password = "W8AEkw=?r#tH";
-    $database = "STUDENT_HUB"; // Changed database name
+    $database = "STUDENT_HUB"; 
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -13,7 +13,7 @@
     }
     
     // Fetch listings from the database
-    $sql = "SELECT * FROM LISTINGS"; // Changed table name
+    $sql = "SELECT * FROM LISTINGS";
     $result = $conn->query($sql);
     
     $listings = array();
