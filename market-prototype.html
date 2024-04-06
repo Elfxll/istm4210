@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GWU Student Hub | Marketplace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="style/main-style.css" rel="stylesheet">
+    <link href="style/market-style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="market.html">Marketplace</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div id="messages">
+        <button onclick="document.location='messages.html'"></button>
+      </div>
+    </div>
+    
+    <div id="myBtnContainer">
+      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+      <button class="btn" onclick="filterSelection('items')"> Listings</button>
+      <button class="btn" onclick="filterSelection('services')"> Services</button>
+      <button class="btn" onclick="filterSelection('moving')"> Moving</button>
+    </div>
+
+    <div id="listings-container" class="container"></div>
+    <div id="modal-container"></div>
+
+    <script>
+      function Listing(id, name, category, price, description, location, seller) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.description = description;
+        this.location = location;
+        this.seller = seller;
+      }
+
+      const listingsContainer = document.getElementById("listings-container");
+      const modalContainer = document.getElementById("modal-container");
+
+      // HARD-CODED DUMMY LISTINGS
+      const listings = [
+        new Listing("1", "Ultra Maniac manga set", "items", "15", "Set of volumes 1-5", "South Hall", "Mai"),
+        new Listing("2", "Levi's jeans", "items", "20", "size 26, no noticeable flaws", "1959 E St", "Catherine"),
+        new Listing("3", "Bath and Body Works perfume", "items", "0", "Wild Apple Daffodil and Wild Berry Tulip, barely used", "1959 E St", "Tina"),
+        new Listing("4", "SQL Tutoring", "services", "15", "SQL and relational database tutoring, $15/hr", "Gelman Library", "Jake"),
+        new Listing("5", "Dogsitting", "services", "30", "Experienced dogsitting, $30/day", "Foggy Bottom", "Vicky"),
+        new Listing("6", "Fall 2024 move-in help", "moving", "20", "Need move-in help? I'll help unload your stuff into your new dorm $20/hour", "Foggy Bottom", "Andrew"),
+        new Listing("7", "Spring 2024 move-out help", "moving", "20", " Will help load your stuff to move out. $20/hour", "Foggy Bottom", "Ellie")
+      ];
+
+      for (let i = 0; i < listings.length; i++) {
+        const ourDiv = document.createElement("div");
+        ourDiv.setAttribute("class", "filterDiv " + listings[i].category);
+        ourDiv.id = listings[i].id;
+        
+        const ourImage = document.createElement("button");
+        ourImage.setAttribute("class", "image-button")
+        ourImage.style.backgroundImage = "url(images/market/" + listings[i].id + ".jpg)";
+
+        const ourListingName = document.createElement("button");
+        ourListingName.setAttribute("class", "market-item");
+        const ourName = document.createElement("p");
+        ourName.innerHTML = listings[i].name;
+        const ourPrice = document.createElement("p");
+        ourPrice.setAttribute("class", "market-price")
+        var price = listings[i].price;
+        if (price == "0") {
+          price = "Free"
+        }
+        else{
+          price = "$"+price;
+        }
+        ourPrice.innerHTML = price;
+        const ourLocation = document.createElement("p");
+        ourLocation.setAttribute("class", "market-location")
+        ourLocation.innerHTML = "<img src=" + "images/location.png height=15" + " alt='location' />  " + listings[i].location;
+
+        ourListingName.append(ourPrice);
+        ourListingName.appendChild(ourName);
+        ourListingName.appendChild(ourLocation);
+
+        ourDiv.appendChild(ourImage);
+        ourDiv.appendChild(ourListingName);
+
+        listingsContainer.appendChild(ourDiv);
+
+        // Attach click event to each listing to show modal
+        ourDiv.addEventListener("click", function() {
+          showModal(listings[i], price);
+        });
+      }
+
+      function showModal(listing, price) {
+      // Modal content
+      const modalContent = `
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img src = "images/market/${listing.id}-full.jpg" class = "img-full center">
+            <h2 class="listing-title">${listing.name}</h2>
+            <p>$${listing.price}</p>
+
+            <div>
+              <h4>Send the seller a message</h4>
+              <form action="/action_page.php">
+                <input type="text" size="50" id="message" name="message" value= "Hi, is this still available?"><br><br>
+                <input type="submit" value="Send">
+              </form>
+            </div>
+
+            <h3>Description</h3>
+            <p>${listing.description}</p>
+            <h3>Seller Information</h3>
+            <p> ${listing.seller}</p>
+            <h3>Location</h3>
+            <p>${listing.location}</p>
+          </div>
+        </div>
+      `;
+      
+      // Append modal content to modal container
+      modalContainer.innerHTML = modalContent;
+      // Display modal
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'block';
+
+      modal.onclick = function(event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    }
+
+
+      function closeModal() {
+        modalContainer.innerHTML = ''; // Clear modal content
+      }
+      
+
+      function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("filterDiv");
+          for (i = 0; i < x.length; i++) {
+              if (c == "all" || x[i].classList.contains(c)) {
+                  x[i].style.display = "block";
+              } else {
+                  x[i].style.display = "none";
+              }
+          }
+      }
+
+
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+    </script>
+  </body>
+</html>
