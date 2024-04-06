@@ -2,6 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+function loginError(){
+    echo "Invalid username or password. Try again";
+}
+
 session_start();
 
 // Database connection
@@ -43,15 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($hashed_password === $stored_hash) {
             // Password match
             $_SESSION['username'] = $username; // 
-            header("Location: home.html"); // Redirect
+            header("Location: market.html"); // Redirect
             exit();
         } else {
             // Incorrect password
-            $error = "Invalid username or password. Try again";
+            header("Location: index.html"); // Redirect
         }
     } else {
         // User not found
-        $error = "Invalid username or password. Try again";
+        header("Location: index.html"); // Redirect
     }
 
     // Close statement and database connection
