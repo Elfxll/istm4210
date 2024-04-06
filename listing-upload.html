@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listing Upload Form</title>
+</head>
+<body>
+    <h2>Upload a Listing</h2>
+    <form method="post" enctype="multipart/form-data" action="add-listing.php">
+        
+        <label for="seller">Seller:</label>
+        <input type="text" id="seller" name="seller" required><br><br>
+
+        <label for="listing-name">Name:</label>
+        <input type="text" id="listing_name" name="listing_name" required><br><br>
+        
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="items">Items</option>
+            <option value="services">Services</option>
+            <option value="moving">Moving</option>
+        </select><br><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea><br><br>
+        
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
+        
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br><br>
+        <!--add image requirement after figuring out image storage-->
+        
+        <input type="submit" value="Upload Listing">
+    </form>
+</body>
+</html>

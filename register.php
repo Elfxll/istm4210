@@ -30,7 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Corrected to check for POST metho
     $stmt->bind_param("sss", $username, $hashed_password, $salt);
 
     if ($stmt->execute() === TRUE) {
-        echo "New record created successfully";
+            echo "<script>";
+            echo "alert('User registered successfully. Log in to get started.');";
+            echo "window.location.href = 'index.html';";
+            echo "</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
