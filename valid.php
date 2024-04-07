@@ -47,15 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($hashed_password === $stored_hash) {
             // Password match
             $_SESSION['username'] = $username; // 
-            header("Location: market.html"); // Redirect
+            header("Location: home.html"); // Redirect
             exit();
         } else {
             // Incorrect password
-            header("Location: index.html"); // Redirect
+            header("Location: login-error.html"); // Redirect
         }
     } else {
         // User not found
-        header("Location: index.html"); // Redirect
+        header("Location: login-error.html"); // Redirect
     }
 
     // Close statement and database connection

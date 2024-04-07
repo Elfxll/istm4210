@@ -1,36 +1,78 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* Add this line to eliminate default body margin */
+}
 
 #wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #033C5A;
 }
 
 #navbar {
-  padding: 30px;
+  float: left;
+  padding: 0px;
+  margin: 0; /* Add this line to eliminate margin */
 }
 #navbar > a {
-  margin-right: 20px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
-#messages {
-  padding: 30px;
+#account {
+
+  top: 0;
+  right: 0;
 }
 
-#messages>button{
-  background-image: url('/images/messenger.png'); /* Assuming 'messages.png' is in the images folder */
-  background-color: rgba(240, 248, 255, 0);
-  width: 50px; 
-  height: 50px; 
-  border: none; 
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: pink; /* Move background color styling from .nav-button to .dropbtn */
 }
 
-#messages>button:focus {
-  outline: none; /* Removes focus outline */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-#messages>a, #navbar>a{
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #033C5A;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
   text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #0190DB;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-button{
+  color: white;
+  background-color: #033C5A;
+  padding: 16px;
+  font-size: 16px;
+}
+
+.nav-button:hover{
+  background-color: #0190DB;
 }
 
 button{
@@ -52,4 +94,8 @@ button{
 .btn.active {
   background-color: #666;
   color: white;
+}
+
+a{
+  text-decoration: none;
 }

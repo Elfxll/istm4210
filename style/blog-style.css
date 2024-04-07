@@ -1,9 +1,4 @@
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 header {
     background-color: #333;
     color: #fff;
@@ -28,19 +23,4 @@ header {
     color: #777;
     font-size: 0.8em;
 }
-#wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-}
-#navbar a {
-    text-decoration: none;
-    color: #333;
-    margin-right: 20px;
-}
-#messages a {
-    text-decoration: none;
-    color: #333;
-}
+
