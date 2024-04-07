@@ -1,0 +1,20 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-nav {
+    width: 800px;
+    height: 150px;
+    margin-bottom: 10px;
+    background-color: #3C8FC9;
+    border-radius: 5px;
+    padding: 2%;
+    font-size: 20px;
+  }
+
+  .home-nav:hover{
+    transition: all ease-in-out 250ms;
+    background-color: #F9E08E;
+  }
