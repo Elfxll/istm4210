@@ -24,7 +24,7 @@
       </div>
     </div>
     
-    <div id="myBtnContainer" style="margin-bottom:5%">
+    <div id="myBtnContainer" style="margin-bottom:5%;margin-top:1%; margin-left:5px;margin-right:5px;">
       <div style="float: left;">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         <button class="btn" onclick="filterSelection('items')"> Items</button>
@@ -39,7 +39,7 @@
 
 
 <script>
-    // Function to fetch listings from PHP script
+    // Fetch listings from PHP script
     function fetchListings() {
         fetch('fetch_listings.php')
             .then(response => response.json())
@@ -52,7 +52,7 @@
             });
     }
 
-    // Function to process fetched listings and generate HTML
+    // Process fetched listings and generate HTML
     function processListings(listings) {
         const listingsContainer = document.getElementById("listings-container");
 

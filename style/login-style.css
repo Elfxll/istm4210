@@ -1,26 +1,27 @@
 
-#login-container {
+#register-container, #login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
-#login-form {
+#register-form, #login-form {
     width: 300px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
 }
-#login-form h1 {
+#register-form h1, #login-form h1 {
     text-align: center;
 }
-#login-form label {
+#register-form label, #login-form label {
     display: block;
     margin-bottom: 5px;
 }
-#login-form input[type="text"],
+#register-form input[type="text"],
+#register-form input[type="password"], #login-form input[type="text"],
 #login-form input[type="password"] {
     width: 100%;
     padding: 8px;
@@ -29,7 +30,7 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-#password-toggle {
+.toggle-button, #password-toggle {
     display: block;
     width: 100%;
     padding: 8px;
@@ -41,7 +42,7 @@
     cursor: pointer;
     text-align: center;
 }
-#login-form button[type="submit"] {
+#register-form button[type="submit"], #login-form button[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
