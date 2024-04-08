@@ -12,20 +12,20 @@
         die("Connection failed: " . $conn->connect_error);
     }
     
-    // Fetch listings from the database
+    // Fetch listings
     $sql = "SELECT * FROM LISTINGS";
     $result = $conn->query($sql);
     
     $listings = array();
     
     if ($result->num_rows > 0) {
-        // Output data of each row
+        // Output each row
         while($row = $result->fetch_assoc()) {
             $listings[] = $row;
         }
     }
     
-    // Output listings as JSON
+
     header('Content-Type: application/json');
     echo json_encode($listings);
     

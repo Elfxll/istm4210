@@ -31,7 +31,11 @@
         <button class="btn" onclick="filterSelection('services')"> Services</button>
         <button class="btn" onclick="filterSelection('moving')"> Moving</button>
       </div>
-      <button style="float: right;" class="btn" onclick="document.location='listing-upload.html'">Upload a listing</button>
+      <div style="float: right;">
+        <button class="btn" onclick="document.view='view-listings.html'">Your listings</button>
+        <button class="btn" onclick="document.location='listing-upload.html'">Upload a listing</button>
+      </div>
+
     </div>
 
     <div id="listings-container" class="container"></div>
@@ -44,7 +48,6 @@
         fetch('fetch_listings.php')
             .then(response => response.json())
             .then(listings => {
-                // Call function to process fetched listings
                 processListings(listings);
             })
             .catch(error => {
@@ -52,7 +55,7 @@
             });
     }
 
-    // Process fetched listings and generate HTML
+    // Process fetched listings arrays and generate HTML
     function processListings(listings) {
         const listingsContainer = document.getElementById("listings-container");
 
@@ -91,14 +94,14 @@
 
             listingsContainer.appendChild(ourDiv);
 
-            // Attach click event to each listing to show modal
+            // Show modal on click
             ourDiv.addEventListener("click", function () {
                 showModal(listing);
             });
         });
     }
 
-    // Call function to fetch listings when the page loads
+    // Fetch listings on load
     window.onload = fetchListings;
 
 
@@ -114,10 +117,10 @@
     
                     <div>
                         <h4>Send the seller a message</h4>
-                        <form action="/action_page.php">
+
                             <input type="text" size="50" id="message" name="message" value="Hi, is this still available?"><br><br>
-                            <input type="submit" value="Send">
-                        </form>
+                            <button onclick="document.location='messages.html'">Send</button>
+
                     </div>
     
                     <h3>Description</h3>
@@ -138,7 +141,7 @@
         const modal = document.querySelector('.modal');
         modal.style.display = 'block';
     
-        // Close modal when clicking outside of it
+        // Close modal when clicking outside
         modal.onclick = function(event) {
             if (event.target === modal) {
                 closeModal();
@@ -152,10 +155,8 @@
         const modalContainer = document.getElementById("modal-container");
         const modal = modalContainer.querySelector('.modal');
         
-        // Hide modal
         modal.style.display = 'none';
-    
-        // Clear modal content
+
         modalContainer.innerHTML = '';
     }
 
