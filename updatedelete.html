@@ -6,8 +6,41 @@
 <body>
     <h2>Update or Delete Listing</h2>
     <form action="update_delete_listing.php" method="post" enctype="multipart/form-data">
-        <label for="listing_id">Listing ID:</label>
-        <input type="text" id="listing_id" name="listing_id" required><br><br>
+        <label for="listing_id">Select Listing:</label>
+        <select id="listing_id" name="listing_id" required>
+            <option value="">Select a listing</option>
+            <?php
+            // Database connection
+            $servername = "mai-nguyen.online";
+            $username = "mai_n";
+            $password = "W8AEkw=?r#tH";
+            $database = "STUDENT_HUB"; 
+            
+            $conn = new mysqli($servername, $username, $password, $database);
+            
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            // Get the logged-in user's ID (assuming you have implemented user authentication)
+            session_start();
+            $user_id = $_SESSION['user_id'];
+            
+            // Retrieve the user's listings from the database
+            $sql = "SELECT id, name FROM LISTINGS WHERE user_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            while ($row = $result->fetch_assoc()) {
+                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+            }
+            
+            $stmt->close();
+            $conn->close();
+            ?>
+        </select><br><br>
         
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
