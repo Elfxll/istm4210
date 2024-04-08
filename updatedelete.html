@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update or Delete Listing</title>
+</head>
+<body>
+    <h2>Update or Delete Listing</h2>
+    <form action="update_delete_listing.php" method="post" enctype="multipart/form-data">
+        <label for="listing_id">Select Listing:</label>
+        <select id="listing_id" name="listing_id" required>
+            <option value="">Select a listing</option>
+            <?php
+            // Database connection
+            $servername = "mai-nguyen.online";
+            $username = "mai_n";
+            $password = "W8AEkw=?r#tH";
+            $database = "STUDENT_HUB"; 
+            
+            $conn = new mysqli($servername, $username, $password, $database);
+            
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            // Get the logged-in user's ID (assuming you have implemented user authentication)
+            session_start();
+            $user_id = $_SESSION['user_id'];
+            
+            // Retrieve the user's listings from the database
+            $sql = "SELECT id, name FROM LISTINGS WHERE user_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            while ($row = $result->fetch_assoc()) {
+                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+            }
+            
+            $stmt->close();
+            $conn->close();
+            ?>
+        </select><br><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="">Select a category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Home & Garden">Home & Garden</option>
+            <option value="Books">Books</option>
+            <!-- Add more categories as needed -->
+        </select><br><br>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01"><br><br>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea><br><br>
+        
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location"><br><br>
+        
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br><br>
+        
+        <input type="submit" name="action" value="Update Listing">
+        <input type="submit" name="action" value="Delete Listing">
+    </form>
+</body>
+</html>
