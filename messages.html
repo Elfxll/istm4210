@@ -1,41 +1,133 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>GWU Student Hub | Messages</title>
-    <meta
-      charset="utf-8"
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link href="style/main-style.css" rel="stylesheet" />
+    <meta charset="utf-8" name="viewport" content="width=device-width, in2
   </head>
 
   <body>
     <div id="wrapper">
       <div id="navbar">
-        <div id="navbar">
-          <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
-        </div>
-      </div>
-
-      <div class="dropdown" style="float:right;" id="account">
-        <button class="dropbtn nav-button">Account</button>
-        <div class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="market.html">Marketplace</a>
+        <a href="blog.html">Blog</a>
         <a href="messages.html">Messages</a>
-        <a href="index.html">Log out</a>
-        </div>
+      </div>
+
+      <div id="message-container">
+          <div id="message-previews">
+          </div>
+          <div id="current-chat-container">
+              <iframe src="chat.html" id="chat-frame" frameborder="0"></iframe>
+              <div id="message-input-area">
+                  <textarea id="message-textbox" placeholder="Type your message here..."></textarea>
+                  <button id="send-button">Send</button>
+              </div>
+          </div>
       </div>
     </div>
 
-    <div id="message-container">
-        <div id="chat-previews">
-            <!--SIDE PANEL WITH OTHER CHAT PREVIEWS-->
-        </div>
-        <div id="chat-open">
-            <!---MAIN PANEL WITH OPEN CHAT 
-            -> CHAT HTML IN IFRAME (SCROLL TO BOTTOM OF MESSAGE) WITH TEXT AREA TO SEND MESSAGE-->
+    <script src="scripts/main.js"></script>
+  </body>
+</html> -->
+
+<link href="style/messagediv.css" rel="stylesheet">
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card chat-app">
+            <div id="plist" class="people-list">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <ul class="list-unstyled chat-list mt-2 mb-0">
+                    <li class="clearfix">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Mike</div>
+                            <div class="status"> <i class="fa fa-circle offline"></i> left 10 mins ago </div>                                            
+                        </div>
+                    </li>
+                    <li class="clearfix active">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Lucy</div>
+                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Thomas </div>
+                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                        </div>
+                    </li>                                    
+                    <li class="clearfix">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Mia</div>
+                            <div class="status"> <i class="fa fa-circle offline"></i> left 15 hours ago </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Lucia</div>
+                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <img src="images/chat/person1.jpeg" alt="person">
+                        <div class="about">
+                            <div class="name">Hoon</div>
+                            <div class="status"> <i class="fa fa-circle offline"></i> offline since Nov 28 </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img src="images/chat/person2.jpeg" alt="person">
+                            </a>
+                            <div class="chat-about">
+                                <h6 class="m-b-0">Lucy </h6>
+                                <small>Last seen: 3 hours ago</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 hidden-sm text-right">
+                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-history">
+                    <iframe src="chat.html" id="chat-frame" frameborder="0" class="iframe-fit"></iframe>
+                    <div id="message-input-area">
+                        <textarea id="message-textbox" placeholder="Type your message here..."></textarea>
+                        <button id="send-button">Send</button>
+                    </div>
+                </div>
+                <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-send"></i></span>
+                        </div>           
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+</div>
 
-  </body>
-</html>
+
