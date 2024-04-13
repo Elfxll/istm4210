@@ -8,33 +8,37 @@
     <title>GWU Student Hub | Post a blog</title>
 </head>
 
-<div id="wrapper">
-    <div id="navbar">
-      <div id="navbar">
-        <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
-      </div>
+<body>
+    <div id="wrapper">
+        <div id="navbar">
+            <a href="home.html" class="nav-button main-nav">Home</a>
+            <a href="market.html" class="nav-button main-nav">Marketplace</a>
+            <a href="blog.html" class="nav-button main-nav">Blog</a>
+        </div>
+
+        <div class="dropdown" style="float:right;" id="account">
+            <button class="dropbtn nav-button">Account</button>
+            <div class="dropdown-content">
+                <a href="messages.html">Messages</a>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
     </div>
 
-    <div class="dropdown" style="float:right;" id="account">
-      <button class="dropbtn nav-button">Account</button>
-      <div class="dropdown-content">
-      <a href="messages.html">Messages</a>
-      <a href="index.html">Log out</a>
-      </div>
-    </div>
-  </div>
+    <form id="blog-form" method="post" enctype="multipart/form-data" action="add-blog.php">
+        <h1>Submit a Blog Post</h1>
 
-<form id="blog-form">
-    <h1>Submit a Blog Post</h1>
+        <label for="blog_title">Title:</label>
+        <input type="text" id="blog_title" name="blog_title" required>
+        <br>
+        <label for="body_text">Content:</label>
+        <textarea id="body_text" name="body_text" required></textarea>
+        <br>
+        <label for="contact_info">Contact Information:</label>
+        <input type="text" id="contact_info" name="contact_info" required>
+        <br>
+        <button type="submit">Submit Post </button>
+    </form>
 
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
-    <br>
-    <label for="content">Content:</label>
-    <textarea id="content" name="content" required></textarea> 
-    <br>
-    <label for="contact_info">Contact Information:</label>
-    <input type="contact_info" id="contact_info" name="contact_info" required>
-    <br>
-    <button type="submit">Submit Post </button>
-</form>
+</body>
+</html>

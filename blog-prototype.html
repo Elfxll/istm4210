@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/main-style.css" rel="stylesheet">
+    <link href="style/blog-style.css" rel="stylesheet">
+    <title>GWU Student Hub | Blog</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="navbar">
+          <div id="navbar">
+            <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
+          </div>
+        </div>
+  
+        <div class="dropdown" style="float:right;" id="account">
+          <button class="dropbtn nav-button">Account</button>
+          <div class="dropdown-content">
+          <a href="messages.html">Messages</a>
+          <a href="index.html">Log out</a>
+          </div>
+        </div>
+      </div>
+      
+    <header>
+        <h1>Blog</h1>
+    </header>
+    <div class="container">
+        <div class="button-container">
+            <button class="btn" onclick="document.location='blog-form.html'">Submit a blog post</button>
+        </div>
+        <div class="post">
+            <h2>Looking for a Roomate </h2>
+            <p>Hi I am a transfer student who is going to start GW in Fall 2024 and was looking for a roommate. I am looking for someone who is fairly clean, a good cook, and not too loud. If you are interested, contact me at johnsmith@gwu.edu</p>
+            <p class="meta">Posted on March 31, 2024</p>
+        </div>
+        <!-- EDIT AND DELETE BUTTON IN JS NEEDS TO BE UPDATED IN SERVER  -->
+         <div>
+                <button class="btn-edit" onclick="editPost('post1')">Edit</button>
+                <button class="btn-delete" onclick="deletePost('post1')">Delete</button>
+            </div>
+        
+        <div class="post">
+            <h2>Assistance with MATH 1051</h2>
+            <p>I am a current freshman taking MATH 1051 in the school of business and I have been hardcore struggling. If anyone has taken the class and can assist me with finding resources or tutoring please reach out to me! janesmith@gwu.edu</p>
+            <p class="meta">Posted on April 1, 2024</p>
+        </div>
+        <div class="post">
+            <h2>Good Restaurants in DC</h2>
+            <p>Looking for good food recommendations in DC!</p>
+            <p class="meta">Posted on April 1, 2024</p>
+        </div>
+        <div class="post">
+            <h2>Barber Shop Recs</h2>
+            <p>Looking for a good barber shop or someone who can cut hair for cheap!</p>
+            <p class="meta">Posted on April 1, 2024</p>
+        </div>
+    </div>
+</body>
+</html>
