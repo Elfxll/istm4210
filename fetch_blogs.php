@@ -13,7 +13,7 @@
     }
     
     // Fetch blogs
-    $sql = "SELECT * FROM BLOGS";
+    $sql = "SELECT * FROM BLOGS ORDER BY BLOG_DATE DESC";
     $result = $conn->query($sql);
     
     $blogs = array();

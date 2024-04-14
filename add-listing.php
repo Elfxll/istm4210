@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     echo "<script>";
-    echo "alert('Listing created successfully.');";
     echo "window.location.href = 'market.html';";
     echo "</script>";
 

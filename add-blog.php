@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirect the user after successful submission
-    header("Location: market.html");
+    header("Location: blog.html");
     exit();
 }
 ?>
