@@ -2,61 +2,63 @@
 <html>
 <head>
   <title>GWU Student Hub | New Listing</title>
-  <meta
-    charset="utf-8"
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  <meta 
+    charset="utf-8" 
+    name="viewport" 
+    content="width=device-width, initial-scale=1, shrink-to-fit=no" 
   />
   <link href="style/main-style.css" rel="stylesheet" />
+  <link href="style/form-style.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="wrapper">
-        <div id="navbar">
-          <div id="navbar">
-            <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
-          </div>
-        </div>
-  
-        <div class="dropdown" style="float:right;" id="account">
-          <button class="dropbtn nav-button">Account</button>
-          <div class="dropdown-content">
-          <a href="messages.html">Messages</a>
-          <a href="index.html">Log out</a>
-          </div>
-        </div>
+  <div id="wrapper">
+    <div id="navbar">
+      <div id="navbar">
+        <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
       </div>
-      
+    </div>
+
+    <div class="dropdown" style="float:right;" id="account">
+      <button class="dropbtn nav-button">Account</button>
+      <div class="dropdown-content">
+        <a href="messages.html">Messages</a>
+        <a href="index.html">Log out</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="listing-form">
     <h2>Upload a Listing</h2>
     <form method="post" enctype="multipart/form-data" action="add-listing.php">
-        
-        <label for="seller">Seller:</label>
-        <input type="text" id="seller" name="seller" required><br><br>
+      
+      <label for="seller">Seller:</label>
+      <input type="text" id="seller" name="seller" required><br><br>
 
-        <label for="listing-name">Title: </label>
-        <input type="text" id="listing_name" name="listing_name" required><br><br>
-        
-        <label for="category">Category:</label>
-        <select id="category" name="category" required>
-            <option value="">Select a category</option>
-            <option value="items">Items</option>
-            <option value="services">Services</option>
-            <option value="moving">Moving</option>
-        </select><br><br>
+      <label for="listing-name">Title:</label>
+      <input type="text" id="listing_name" name="listing_name" required><br><br>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" required><br><br>
-        
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required></textarea><br><br>
-        
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required><br><br>
-        
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
-        <!--TODO: add image requirement after figuring out image storage-->
-        
-        <input type="submit" value="Submit">
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="">Select a category</option>
+        <option value="items">Items</option>
+        <option value="services">Services</option>
+        <option value="moving">Moving</option>
+      </select><br><br>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" required></textarea><br><br>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required><br><br>
+
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*"><br><br>
+
+      <input type="submit" value="Submit">
     </form>
+  </div>
 </body>
 </html>

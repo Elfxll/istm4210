@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update or Delete Listing</title>
+  <title>GWU Student Hub | Update or Delete Listing</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="style/main-style.css" rel="stylesheet" />
+  <link href="style/form-style.css" rel="stylesheet" />
 </head>
 <body>
+  <div id="wrapper">
+    <div id="navbar">
+      <div id="navbar">
+        <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float:right;" id="account">
+      <button class="dropbtn nav-button">Account</button>
+      <div class="dropdown-content">
+        <a href="messages.html">Messages</a>
+        <a href="index.html">Log out</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="update-form">
     <h2>Update or Delete Listing</h2>
     <form action="update_delete_listing.php" method="post" enctype="multipart/form-data">
-        <label for="listing_id">Select Listing:</label>
-        <select id="listing_id" name="listing_id" required>
-            <option value="">Select a listing</option>
-            <?php
-            // Database connection
-            $servername = "mai-nguyen.online";
-            $username = "mai_n";
-            $password = "W8AEkw=?r#tH";
-            $database = "STUDENT_HUB"; 
-            
-            $conn = new mysqli($servername, $username, $password, $database);
-            
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            
-            // Get the logged-in user's ID (assuming you have implemented user authentication)
-            session_start();
-            $user_id = $_SESSION['user_id'];
-            
-            // Retrieve the user's listings from the database
-            $sql = "SELECT id, name FROM LISTINGS WHERE user_id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $user_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            while ($row = $result->fetch_assoc()) {
-                echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-            }
-            
-            $stmt->close();
-            $conn->close();
-            ?>
-        </select><br><br>
+      <label for="listing_id">Select Listing:</label>
+      <select id="listing_id" name="listing_id" required>
+        <option value="">Select a listing</option>
+        <?php
+        // Database connection
+        $servername = "mai-nguyen.online";
+        $username = "mai_n";
+        $password = "W8AEkw=?r#tH";
+        $database = "STUDENT_HUB"; 
         
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+        $conn = new mysqli($servername, $username, $password, $database);
         
-        <label for="category">Category:</label>
-        <select id="category" name="category" required>
-            <option value="">Select a category</option>
-            <option value="items">Items</option>
-            <option value="services">Services</option>
-            <option value="moving">Moving</option>
-        </select><br><br>
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
         
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01"><br><br>
+        // Get the logged-in user's ID (assuming you have implemented user authentication)
+        session_start();
+        $user_id = $_SESSION['user_id'];
         
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4"></textarea><br><br>
+        // Retrieve the user's listings from the database
+        $sql = "SELECT id, name FROM LISTINGS WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
         
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location"><br><br>
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+        }
         
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
-        
-        <input type="submit" name="action" value="Update Listing">
-        <input type="submit" name="action" value="Delete Listing">
+        $stmt->close();
+        $conn->close();
+        ?>
+      </select><br><br>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="">Select a category</option>
+        <option value="items">Items</option>
+        <option value="services">Services</option>
+        <option value="moving">Moving</option>
+      </select><br><br>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" step="0.01"><br><br>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4"></textarea><br><br>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location"><br><br>
+
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*"><br><br>
+
+      <input type="submit" name="action" value="Update Listing">
+      <input type="submit" name="action" value="Delete Listing">
     </form>
+  </div>
 </body>
 </html>
