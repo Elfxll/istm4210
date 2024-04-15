@@ -4,10 +4,10 @@
     $password = "W8AEkw=?r#tH";
     $database = "STUDENT_HUB"; 
     
-    // Create connection
+    //connect database
     $conn = new mysqli($servername, $username, $password, $database);
     
-    // Check connection
+    //check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listing_id = $_POST["listing_id"];
     $action = $_POST["action"];
     
-    // Database connection
+    //connect database
     $servername = "mai-nguyen.online";
     $username = "mai_n";
     $password = "W8AEkw=?r#tH";
@@ -16,22 +16,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     if ($action == "Update Listing") {
-        // Retrieve form data for updating the listing
+        //retrieve form data for updating the listing
         $name = $_POST["name"];
         $category = $_POST["category"];
         $price = $_POST["price"];
         $description = $_POST["description"];
         $location = $_POST["location"];
         
-        // Prepare the SQL statement for updating the listing
+        //SQL for updating the listing
         $sql = "UPDATE LISTINGS SET name = ?, category = ?, price = ?, description = ?, location = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssdssi", $name, $category, $price, $description, $location, $listing_id);
         
-        // Check if a new image was uploaded
+        //check if new image was uploaded
         if (!empty($_FILES["image"]["name"])) {
             $image = $_FILES["image"]["name"];
-            // Move the uploaded image to a desired location
+            //move the uploaded image to a new location
             move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/" . $image);
         }
         
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $stmt->close();
     } elseif ($action == "Delete Listing") {
-        // Prepare the SQL statement for deleting the listing
+        //SQL statement for deleting the listing
         $sql = "DELETE FROM LISTINGS WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $listing_id);

@@ -24,3 +24,48 @@ header {
     font-size: 0.8em;
 }
 
+.content{
+    margin: 5px;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 50%;
+    height: 75px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    margin: 0;
+}
+
+
+.comment-submission textarea, button{
+    margin-left: 325px;
+}
+
+.comment{
+    width: 50%;
+    height: max-content;
+    padding: 1px 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    margin-left: 325px; 
+    margin-bottom: 10px;
+}
+
+.commenter-name{
+    font-weight: 700;
+}
+
+.comment-date{
+    font-size: small;
+    color: gray;
+}
+
+

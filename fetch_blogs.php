@@ -4,22 +4,21 @@
     $password = "W8AEkw=?r#tH";
     $database = "STUDENT_HUB"; 
     
-    // Create connection
+    //connect database
     $conn = new mysqli($servername, $username, $password, $database);
     
-    // Check connection
+    //check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     
-    // Fetch blogs
+    //use SQL to get blogs, show most recent first
     $sql = "SELECT * FROM BLOGS ORDER BY BLOG_DATE DESC";
     $result = $conn->query($sql);
     
     $blogs = array();
     
     if ($result->num_rows > 0) {
-        // Output each row
         while($row = $result->fetch_assoc()) {
             $blogs[] = $row;
         }

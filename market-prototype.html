@@ -95,14 +95,14 @@
 
         listingsContainer.appendChild(ourDiv);
 
-        // Attach click event to each listing to show modal
+        //show modal on click
         ourDiv.addEventListener("click", function() {
           showModal(listings[i], price);
         });
       }
 
       function showModal(listing, price) {
-      // Modal content
+
       const modalContent = `
         <div class="modal">
           <div class="modal-content">

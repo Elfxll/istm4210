@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/main-style.css" rel="stylesheet">
+    <link href="style/blog-style.css" rel="stylesheet">
+    <title>GWU Student Hub | Blog</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="navbar">
+            <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
+        </div>
+      
+        <div class="dropdown" style="float:right;" id="account">
+            <button class="dropbtn nav-button">Account</button>
+            <div class="dropdown-content">
+                <a href="messages.html">Messages</a>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="btn" onclick="document.location='blog.html'">&#8592;</button>
+    </div>
+    <div class="content">
+    <!--BLOG POST-->
+        <div class="blogs-container">
+            <h1>Clothing Swap in U-Yard 4/20</h1>
+            <p>Free clothing swap in U-Yard on Saturday 5/20! Bring pre-loved pieces and mix up your wardrobe</p>
+        </div>
+        <!--COMMENTS SECTION-->
+        <br>
+        <div class="comment-submission">
+            <textarea id="comment-text" name="comment-text" rows="4" cols="50" placeholder="Add a comment..."></textarea>
+            <br>
+            <button>Comment</button>
+        </div>
+        <br>
+        <br>
+        <div class="comment-section">
+
+            <div class="comment">
+                <div class="commenter-info">
+                    <p class="commenter-name">AJ</p>
+                </div>
+                <div class="comment-text">OMG that sounds like so much fun! Will definitely check it out :)</div>
+                <p class="comment-date">Yesterday</p>
+            </div>
+
+            <div class="comment">
+                <div class="commenter-info">
+                    <p class="commenter-name">Vicky</p>
+                </div>
+                <div class="comment-text">When's the next one?</div>
+                <p class="comment-date">2 days ago</p>
+            </div>
+
+            <div class="comment">
+                <div class="commenter-info">
+                    <p class="commenter-name">Amanda</p>
+                </div>
+                <div class="comment-text">Got so many cute clothes from the last one <3</div>
+                <p class="comment-date">2 days ago</p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

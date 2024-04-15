@@ -43,7 +43,7 @@
 
 
 <script>
-    // Fetch listings from PHP script
+    //fetch listings from PHP script
     function fetchListings() {
         fetch('fetch_listings.php')
             .then(response => response.json())
@@ -55,7 +55,7 @@
             });
     }
 
-    // Process fetched listings arrays and generate HTML
+    //process fetched listings arrays and generate HTML
     function processListings(listings) {
         const listingsContainer = document.getElementById("listings-container");
 
@@ -94,14 +94,14 @@
 
             listingsContainer.appendChild(ourDiv);
 
-            // Show modal on click
+            //show modal on click
             ourDiv.addEventListener("click", function () {
                 showModal(listing);
             });
         });
     }
 
-    // Fetch listings on load
+    //fetch listings on load
     window.onload = fetchListings;
 
 
@@ -133,15 +133,15 @@
             </div>
         `;
     
-        // Append modal content to modal container
+        //append modal content
         const modalContainer = document.getElementById("modal-container");
         modalContainer.innerHTML = modalContent;
     
-        // Display modal
+        //display modal
         const modal = document.querySelector('.modal');
         modal.style.display = 'block';
     
-        // Close modal when clicking outside
+        //close modal when clicking outside
         modal.onclick = function(event) {
             if (event.target === modal) {
                 closeModal();

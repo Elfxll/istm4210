@@ -55,15 +55,15 @@
 
                 //title
                 const ourTitle = document.createElement("h2");
-                ourTitle.innerHTML = "<a>"+blog.blog_title+"</a>";
+                ourTitle.innerHTML = "<a href='blog_"+blog.id+".html'>"+blog.blog_title+"</a>";
                 //text
                 const ourText = document.createElement("p");
-                ourText.innerHTML = blog.body_text; // Corrected variable name
+                ourText.innerHTML = blog.body_text;
                 //date
                 const ourDate = document.createElement("p");
-                ourDate.innerHTML = blog.blog_date; // Corrected variable name
+                ourDate.innerHTML = blog.blog_date;
 
-                ourDiv.appendChild(ourTitle); // Used appendChild instead of append
+                ourDiv.appendChild(ourTitle);
                 ourDiv.appendChild(ourText);
                 ourDiv.appendChild(ourDate);
 
