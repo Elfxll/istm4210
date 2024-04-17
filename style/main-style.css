@@ -1,6 +1,16 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0; /* Add this line to eliminate default body margin */
+  color: #033C5A;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: #033C5A;
+}
+
+button{
+  color: #033C5A;
 }
 
 #wrapper {
@@ -13,7 +23,7 @@ body {
 #navbar {
   float: left;
   padding: 0px;
-  margin: 0; /* Add this line to eliminate margin */
+  margin: 0;
 }
 #navbar > a {
   margin-right: 0px;
@@ -32,7 +42,6 @@ body {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  background-color: pink; /* Move background color styling from .nav-button to .dropbtn */
 }
 
 

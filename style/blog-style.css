@@ -68,4 +68,22 @@ textarea {
     color: gray;
 }
 
+.button-container{
+    display: flex;
+    padding: 2px;
+    margin: auto;
+}
 
+.btn{
+    margin: 2px;
+}
+
+.delete{
+    color: white;
+    background-color: rgb(255, 86, 86);
+}
+
+.submit{
+    color: white;
+    background-color: #0190DB;
+}

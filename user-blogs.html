@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/main-style.css" rel="stylesheet">
+    <link href="style/blog-style.css" rel="stylesheet">
+    <title>GWU Student Hub | Your Blogs</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="navbar">
+            <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
+        </div>
+      
+        <div class="dropdown" style="float:right;" id="account">
+            <button class="dropbtn nav-button">Account</button>
+            <div class="dropdown-content">
+                <a href="messages.html">Messages</a>
+                <a href="index.html">Log out</a>
+            </div>
+        </div>
+    </div>
+    
+    <header>
+        <h1>Blog</h1>
+    </header>
+    <div class="blogs-container" id="blogs-container">
+        <div class="button-container">
+            <button class="btn" onclick="document.location='blog.html'">GW blogs</button>
+            <button class="btn" onclick="document.location='blog-form.html'">Submit a blog post</button>
+        </div>
+    </div>
+
+    <script>
+        //blogs from PHP script
+        function fetchBlogs() {
+            fetch('fetch_blogs.php')
+                .then(response => response.json())
+                .then(blogs => {
+                    processBlogs(blogs);
+                })
+                .catch(error => {
+                    console.error('Error fetching blogs:', error);
+                });
+        }
+
+        //process fetched blogs arrays and generate HTML
+        function processBlogs(blogs) {
+            const blogsContainer = document.getElementById("blogs-container");
+
+            blogs.forEach(blog => {
+                if (blog.contact_info == "mnguyen1030@gwu.edu"){
+
+                    const ourDiv = document.createElement("div");
+                    ourDiv.setAttribute("class", "post");
+                    ourDiv.id = blog.id;
+
+                    //title
+                    const ourTitle = document.createElement("h2");
+                    ourTitle.innerHTML = "<a href='blog_"+blog.id+".html'>"+blog.blog_title+"</a>";
+                    //text
+                    const ourText = document.createElement("p");
+                    ourText.innerHTML = blog.body_text;
+                    //date
+                    const ourDate = document.createElement("p");
+                    ourDate.innerHTML = blog.blog_date;
+
+                    //edit/delete button div
+                    const ourButtonDiv = document.createElement("div");
+                    ourButtonDiv.setAttribute("class","button-container");
+                    //buttons
+                    const editButton = document.createElement("button");
+                    editButton.setAttribute("class", "btn edit");
+                    editButton.setAttribute("onclick", "document.location='edit-blog.html'");
+                    editButton.innerHTML = "Edit";
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.setAttribute("class", "btn delete");
+                    deleteButton.setAttribute("style", "color: white; background-color: rgb(255, 86, 86);");
+                    deleteButton.setAttribute("onclick", "document.location='edit-blog.html'");
+                    deleteButton.innerHTML = "Delete";
+
+                    ourButtonDiv.appendChild(editButton);
+                    ourButtonDiv.appendChild(deleteButton);
+
+                    ourDiv.appendChild(ourTitle);
+                    ourDiv.appendChild(ourText);
+                    ourDiv.appendChild(ourDate);
+                    ourDiv.appendChild(ourButtonDiv);
+
+
+
+                    blogsContainer.appendChild(ourDiv);
+                    }
+            });
+        }
+
+        //fetch blogs on load
+        window.onload = fetchBlogs;
+    </script>
+
+</body>
+</html>

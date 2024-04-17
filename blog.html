@@ -25,14 +25,15 @@
     <header>
         <h1>Blog</h1>
     </header>
-    <div class="blogs-container" id="blogs-container"> <!-- Corrected id -->
+    <div class="blogs-container" id="blogs-container">
         <div class="button-container">
+            <button class="btn" onclick="document.location='user-blogs.html'">Your blogs</button>
             <button class="btn" onclick="document.location='blog-form.html'">Submit a blog post</button>
         </div>
     </div>
 
     <script>
-        // Fetch blogs from PHP script
+        //blogs from PHP script
         function fetchBlogs() {
             fetch('fetch_blogs.php')
                 .then(response => response.json())
@@ -44,7 +45,7 @@
                 });
         }
 
-        // Process fetched blogs arrays and generate HTML
+        //process fetched blogs arrays and generate HTML
         function processBlogs(blogs) {
             const blogsContainer = document.getElementById("blogs-container");
 
@@ -67,11 +68,13 @@
                 ourDiv.appendChild(ourText);
                 ourDiv.appendChild(ourDate);
 
+
+
                 blogsContainer.appendChild(ourDiv);
             });
         }
 
-        // Call the function to fetch blogs when the page loads
+        //fetch blogs on load
         window.onload = fetchBlogs;
     </script>
 
