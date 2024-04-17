@@ -27,7 +27,7 @@
     </header>
     <div class="blogs-container" id="blogs-container">
         <div class="button-container">
-            <button class="btn" onclick="document.location='blog.html'">GW blogs</button>
+            <button class="btn" onclick="document.location='blog.html'">&#8592;</button>
             <button class="btn" onclick="document.location='blog-form.html'">Submit a blog post</button>
         </div>
     </div>
@@ -78,7 +78,6 @@
                     const deleteButton = document.createElement("button");
                     deleteButton.setAttribute("class", "btn delete");
                     deleteButton.setAttribute("style", "color: white; background-color: rgb(255, 86, 86);");
-                    deleteButton.setAttribute("onclick", "document.location='edit-blog.html'");
                     deleteButton.innerHTML = "Delete";
 
                     ourButtonDiv.appendChild(editButton);
