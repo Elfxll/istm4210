@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GWU Student Hub | Your Listings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="style/main-style.css" rel="stylesheet">
+    <link href="style/market-style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <a href="home.html">
+        <img src="images/logos/gw_monogram_2c.png" class="logo"><h1>Student Hub</h1>
+      </a>
+    </div>
+    <div id="wrapper">
+      <div id="navbar">
+        <div id="navbar">
+          <a href="home.html" class="nav-button main-nav">Home</a><a href="market.html" class="nav-button main-nav">Marketplace</a><a href="blog.html" class="nav-button main-nav">Blog</a>
+        </div>
+      </div>
+
+      <div class="dropdown" style="float:right;" id="account">
+        <button class="dropbtn nav-button">Account</button>
+        <div class="dropdown-content">
+        <a href="messages.html">Messages</a>
+        <a href="index.html">Log out</a>
+        </div>
+      </div>
+    </div>
+    
+    <div id="myBtnContainer" style="margin-bottom:5%;margin-top:1%; margin-left:5px;margin-right:5px;">
+      <div style="float: left;">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('items')"> Items</button>
+        <button class="btn" onclick="filterSelection('services')"> Services</button>
+        <button class="btn" onclick="filterSelection('moving')"> Moving</button>
+      </div>
+      <div style="float: right;">
+        <button class="btn" onclick="document.location='market.html'">&#8592;</button>
+        <button class="btn" onclick="document.location='listing-upload.html'">Upload a listing</button>
+      </div>
+
+    </div>
+
+    <div id="listings-container" class="container"></div>
+    <div id="modal-container"></div>
+
+
+<script>
+    //fetch listings from PHP script
+    function fetchListings() {
+        fetch('fetch_listings.php')
+            .then(response => response.json())
+            .then(listings => {
+                processListings(listings);
+            })
+            .catch(error => {
+                console.error('Error fetching listings:', error);
+            });
+    }
+
+    //process fetched listings arrays and generate HTML
+    function processListings(listings) {
+        const listingsContainer = document.getElementById("listings-container");
+
+        listings.forEach(listing => {
+            const ourDiv = document.createElement("div");
+            ourDiv.setAttribute("class", "filterDiv " + listing.category);
+            ourDiv.id = listing.id;
+
+            const ourImage = document.createElement("button");
+            ourImage.setAttribute("class", "image-button")
+            ourImage.style.backgroundImage = "url(images/market/" + listing.id + ".jpg)";
+
+            const ourListingName = document.createElement("button");
+            ourListingName.setAttribute("class", "market-item");
+            const ourName = document.createElement("p");
+            ourName.innerHTML = listing.name;
+            const ourPrice = document.createElement("p");
+            ourPrice.setAttribute("class", "market-price")
+            var price = listing.price;
+            if (price == "0") {
+                price = "Free"
+            } else {
+                price = "$" + price;
+            }
+            ourPrice.innerHTML = price;
+            const ourLocation = document.createElement("p");
+            ourLocation.setAttribute("class", "market-location")
+            ourLocation.innerHTML = "<img src=" + "images/location.png height=15" + " alt='location' />  " + listing.location;
+
+            ourListingName.append(ourPrice);
+            ourListingName.appendChild(ourName);
+            ourListingName.appendChild(ourLocation);
+
+            ourDiv.appendChild(ourImage);
+            ourDiv.appendChild(ourListingName);
+
+            listingsContainer.appendChild(ourDiv);
+
+            //show modal on click
+            ourDiv.addEventListener("click", function () {
+                showModal(listing);
+            });
+        });
+    }
+
+    //fetch listings on load
+    window.onload = fetchListings;
+
+
+
+    function showModal(listing) {
+        const modalContent = `
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <img src="images/market/${listing.id}-full.jpg" class="img-full center">
+                    <h2 class="listing-title">${listing.name}</h2>
+                    <p>$${listing.price}</p>
+    
+                    <div>
+                        <h4>Send the seller a message</h4>
+
+                            <input type="text" size="50" id="message" name="message" value="Hi, is this still available?"><br><br>
+                            <button onclick="document.location='messages.html'">Send</button>
+
+                    </div>
+    
+                    <h3>Description</h3>
+                    <p>${listing.description}</p>
+                    <h3>Seller Information</h3>
+                    <p>${listing.seller}</p>
+                    <h3>Location</h3>
+                    <p>${listing.location}</p>
+                </div>
+            </div>
+        `;
+    
+        //append modal content
+        const modalContainer = document.getElementById("modal-container");
+        modalContainer.innerHTML = modalContent;
+    
+        //display modal
+        const modal = document.querySelector('.modal');
+        modal.style.display = 'block';
+    
+        //close modal when clicking outside
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    }
+
+
+
+    function closeModal() {
+        const modalContainer = document.getElementById("modal-container");
+        const modal = modalContainer.querySelector('.modal');
+        
+        modal.style.display = 'none';
+
+        modalContainer.innerHTML = '';
+    }
+
+      
+
+      function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("filterDiv");
+          for (i = 0; i < x.length; i++) {
+              if (c == "all" || x[i].classList.contains(c)) {
+                  x[i].style.display = "block";
+              } else {
+                  x[i].style.display = "none";
+              }
+          }
+      }
+
+
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+    </script>
+  </body>
+</html>
